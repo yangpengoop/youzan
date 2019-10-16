@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    youzanBuy.init({
+
+        access_token:  'b7418efa6110b701aae63da0b30ce56',
+
+        expireTime:  1565337521226
+
+    }).then(result  =>  {
+
+        console.log(result.success);  // true
+
+        console.log(result.message);  // 初始化成功
+
+    }).catch(result  =>  {
+
+        console.log(result.success);  // false
+
+        console.log(result.message);  // token即将超时，请重新获取token
+
+        console.log(result.errorCode);  // 000001: 已经初始化 000002:access_token不存在 000003:token即将超时（token超时时间小于1分钟，则初始化失败，可重新获取token并且初始化）
+
+    });
+
+    (function () {
+        const scriptURL = 'https://su.yzcdn.cn/youzanyun/zanBuy.b6a7f4ef.js';
+        if (window.youzanBuy) {
+            if (window.youzanBuy.init) {
+                buyInit();
+            } else {
+                loadScript();
+            }
+        } else {
+            loadScript();
+        }
+
+        const loadScript = () => {
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = scriptURL;
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+            script.onload = BuyInit;
+        }
+        const initFunc = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve({access_token: 'b7418efa6110b701aae63da0b30ce56', expireTime: new Date().getTime() + 1000000})
+                }, 3000)
+            })
+        }
+        const buyInit = () =>  {
+            // 异步
+            /* window.youzanBuy.init(initFunc).then((data) => {
+              console.log(data,'!!!')
+            }) ;
+            */
+            // 同步
+            window.youzanBuy.init({access_token: 'b7418efa6110b701aae63da0b30ce56', expireTime: new Date().getTime() + 1000000}).then((data) => {
+                console.log(data,'!!!')
+            }) ;
+        }
+    })();
+    /*]]>*/
+</script>
+</html>
