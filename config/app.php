@@ -143,6 +143,14 @@ return [
     // 异常处理handle类 留空使用 \think\exception\Handle
     'exception_handle'       => '\app\lib\exception\ExceptionHandler',
 
-
+    'captcha'   => [
+        'codeSet'   => "1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM",
+        'fontSize'  => '28',
+        'useCurve'  => false,
+        'imageH'    => 60,
+        'imageW'    => 100,
+        'length'    => 1,
+        'reset'     => true,
+    ],
 
 ];

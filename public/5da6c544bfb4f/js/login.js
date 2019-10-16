@@ -166,7 +166,6 @@ $(function(){
 		if (tab == 'account_number') {
 			$(".log-btn").click(function(){
 				// var type = 'phone';
-				console.log(1231321);
 				var inp = $.trim($('#num').val());
 				var pass = $.md5($.trim($('#pass').val()));
 				if (checkAccount(inp) && checkPass(pass)) {
@@ -214,7 +213,7 @@ $(function(){
 			                }
 			            },
 			            error:function(){
-			                
+
 			            }
 			        });
 				} else {
@@ -248,7 +247,7 @@ $(function(){
 			                }
 			            },
 			            error:function(){
-			                
+
 			            }
 			        });
 				} else {

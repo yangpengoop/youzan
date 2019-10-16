@@ -65,6 +65,7 @@ class User extends Controller
         //添加登录日志记录
         $userLogModel = new UserLogModel();
         $userInfo = (new UserModel())->getUserInfoByName($data['username']);
+        if(!$userInfo) throw new ParameterException(['code'=>200,'msg'=>'用户不存在']);
         $logRes = $userLogModel->addUserLog($userInfo['id'],$userLogModel::LOGIN);
         if(!$logRes) throw new ParameterException();
 
